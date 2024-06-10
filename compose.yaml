@@ -1,0 +1,12 @@
+name: kafka-oreily-codes
+
+services:
+  kafka:
+    image: apache/kafka:3.7.0
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+
+volumes:
+    kafka-data:
