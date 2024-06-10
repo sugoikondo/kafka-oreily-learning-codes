@@ -1,0 +1,14 @@
+version: '3'
+
+tasks:
+  default:
+    deps:
+      - task: up
+
+  up:
+    cmds:
+      - docker-compose up -d kafka
+
+  down:
+    cmds:
+      - docker-compose down
