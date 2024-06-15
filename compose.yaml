@@ -10,7 +10,6 @@ services:
       - kafka-data:/var/lib/kafka/data
   kafka-ui:
     image: provectuslabs/kafka-ui:master
-    restart: always
     depends_on:
       - kafka0
     ports:

@@ -7,7 +7,7 @@ tasks:
 
   up:
     cmds:
-      - docker-compose up -d kafka kafka-ui
+      - docker-compose up -d
 
   down:
     cmds:
