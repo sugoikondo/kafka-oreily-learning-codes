@@ -1,20 +1,24 @@
 name: kafka-oreily-codes
 
 services:
-  kafka:
+  kafka0:
     image: apache/kafka:3.7.0
     ports:
       - "9092:9092"
+      - "9997:9997"
     volumes:
       - kafka-data:/var/lib/kafka/data
   kafka-ui:
-    image: provectuslabs/kafka-ui:v0.7.2
+    image: provectuslabs/kafka-ui:master
     restart: always
+    depends_on:
+      - kafka0
     ports:
-      - "8081:8080"
+      - "8080:8080"
     environment:
       - KAFKA_CLUSTERS_0_NAME=local
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka0:9092
+      - KAFKA_CLUSTERS_0_METRICS_PORT=9997
 
 volumes:
     kafka-data:

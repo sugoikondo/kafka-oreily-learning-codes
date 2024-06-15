@@ -3,6 +3,7 @@
 
 import java.util.Properties
 import org.apache.kafka.clients.producer.KafkaProducer
+import org.apache.kafka.clients.producer.ProducerRecord
 
 val kafkaProperties = Properties()
 // サンプルでは 2 つ以上のブローカーを指定しているが、ここでは簡易化のために 1 つのみ設定する
@@ -11,3 +12,11 @@ kafkaProperties.put("key.serializer", "org.apache.kafka.common.serialization.Str
 kafkaProperties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
 
 val producer = KafkaProducer<String, String>(kafkaProperties)
+
+val record = ProducerRecord("CustomaCountry", "Precision Products", "France")
+
+try {
+    producer.send(record).get()
+} catch (e: Exception) {
+    e.printStackTrace()
+}
